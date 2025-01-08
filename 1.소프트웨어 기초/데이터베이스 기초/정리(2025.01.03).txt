@@ -1,5 +1,0 @@
-MYSQL 기본 DB
-information_schema	: 메타데이터 제공, 데이터베이스정보제공(테이블,열,인덱스...)
-performance_schema	: 시스템 성능 관련정보 제공(쿼리성능, 서버리소스 사용현황 , 대기중인 이벤트...)
-	mysql	: 인증정보(사용자, 권한...)
-	sys	: information_schema, performance_schema의 분석을 돕기위한 DB(View....)
