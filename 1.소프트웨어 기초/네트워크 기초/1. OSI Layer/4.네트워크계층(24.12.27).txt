@@ -1,0 +1,17 @@
+1 OSI 모델중 3계층 모델이 하는 역할은 무엇인가요
+	경로탐색
+
+2 3계층 관련 장치는 무엇인가요
+	L3 Switch, Router
+
+3 3계층 관련 프로토콜 종류는 어떤게 있나요
+	IP, ICMP, ARP, Pouting Protocol(*RIP,OSPF, BGP, EIGRP, *Static Routing)
+
+4 ICMP 의 용도는?
+	패킷전송 테스트 - 문제진단
+
+5 IP 의 용도는?
+	호스트 구분
+
+6 Routing 프로토콜의 용도는
+	최적의 경로탐색
