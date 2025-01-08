@@ -1,0 +1,18 @@
+Routing Protocol ) Route :경로/Router : 경로안내장치/Routing : 경로안내작업 /Protocol:통신 프로그램
+
+    1. 정적 라우팅(Static Routing - 수동)
+	속도↑, 부하↓, 네트워크 변화에 대응하지 못함(길이 끊겼을때 새로운 경로 못찾음)
+        1) static	: 단일 목적지 방향 지정
+        2) default	: 지정하지 않은 모든 목적지 방향 지정 > 0.0.0.0
+
+
+    2. 동적 라우팅(Dynamic Routing - 자동) > 네트워크 변화에 대응 가능
+	AS(Autonomous System) : 자치시스템 - 관리자에 의해 관리되는 라우터의 집합
+	  ASBR : AS 가장자리에서 다른 AS를 연결할 때 사용되는 라우터
+	    i) IGP(Interior Gateway Protocol) - AS내부통신 프로토콜
+	        1) Distance Vector : RIPv2 / Hop(장치단위) - 최대 15hop / 대규모 사용불가
+		전체네트워크 학습 -> *최적경로 산출
+	        2) Link-State : OSPF : 라우터의 연결 상태 정보를 통해 최단 경로 산출
+	    ii) EPG(Exterior Gateway Protocol) - AS외부통신 프로토콜
+	        1) BGP
+		

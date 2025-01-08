@@ -1,0 +1,5 @@
+DNS - Domain Network Service
+ www.naver.com -> xxx.xx.xxx.x
+
+HTTP - Hyper Text Transfer Protocol > HTML(Hyper Text Markup Language)
+
