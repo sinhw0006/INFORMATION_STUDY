@@ -1,0 +1,48 @@
+DDL - 데이터 정의어
+create : db, table 생성
+ create database 이름;
+ create table 이름;
+	create table tbl_user( user_id varchar(10) primary key,
+		user_password varchar(100) not null,
+		user_name varchar(45) not null );
+	
+alter : 테이블 수정
+	컬럼추가 : alter table 테이블이름 add column 컬럼이름 타입;
+	컬럼삭제 : alter table 테이블이름 drop 컬럼이름;
+	컬럼수정 : alter table 테이블이름 change column 기존컬럼이름 바꿀컬럼이름 타입;
+	
+drop : db, table 삭제
+
+DML - 데이터 조작어
+select : 데이터 조회
+	select 컬럼이름 or * from 테이블이름;
+	select * from 테이블이름 where 조건식;
+	select * from 테이블이름 order by AES; 정렬
+
+insert : 데이터 삽입
+	insert into 테이블이름(삽입할컬럼이름) values(값);
+
+update : 데이터 수정
+	update 테이블이름 set 컬럼명="컬럼값" where 조건;
+	ex) update tbl_user set user_name='철수' where user_id='user20';
+		> tbl_user테이블의 user_id의 값이 user20인 데이터의 user_name을 철수로 바꿔
+
+delete : 데이터 삭제
+	delete from 테이블명 where 조건;
+	delete from tbl_user where user_id='user10';
+
+DCL - 데이터 제어어
+	사용자 계정 추가 : create user ID@localhost identified by 'bsit@COM';
+		localhost -> 로컬전용 %-> 외부접속 허용 ex) create user ID@'%' iden....
+	flush privileges; 내용 적용
+
+grant : 권한부여
+	grant (select,insert,update) on db명.테이블명 to ID@'%';
+	ex) grant select on hi.* to ID@'%'; 
+		> 외부접근이 가능한 ID에게 hi db의 모든테이블의 select 권한을 부여한다
+	grant all privileges .... > 모든권한
+
+	show grants for ID@'%'; > 권한 확인
+
+revoke : 권한제거
+	revoke (select,insert,update,all) on ..... > grant와 동일
