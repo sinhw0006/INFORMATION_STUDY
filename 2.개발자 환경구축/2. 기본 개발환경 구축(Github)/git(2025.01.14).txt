@@ -1,0 +1,132 @@
+Git - 분산형 버전 관리 시스템
+ 버전 관리 : 특정시점의 버전을 다시 꺼내올 수 있는 시스템
+	이전 상태(백업), 시간, 누가 수정, 동시작업 등등...
+
+- 전역설정 > 안하면 commit 불가
+  - git --global user.email "your email"
+  - git --global user.name "your nickname"
+  - git config - -global - -list 
+
+git init : 초기 설정 > .git 파일 생성
+
+.git
+  HEAD : 작업 중인 브렌치 파일
+  hooks : 발생 이벤트에 대해 자동 실핼 스크립트 파일
+
+git status : 깃 상태 확인
+
+git add 파일명 > 스테이지에 새로운 파일 등록 > git add * 가능
+
+git commit -m V0.0 > 버전등록
+
+git log => 등록된 git 확인 > git log --oneline => 요약설명
+
+git reset : 버전 되돌리기
+  --hard	: 이전 버전으로 옮기고 최신파일 삭제(위험)
+		MD X / SA X
+  --soft	: Head값을 이전 버전으로 옮김(최신버전 파일 유지)
+		=> 최신버전에서 추가된 파일 스테이지에 등록
+		MD O / SA O
+  --mixed	: Head값을 이전 버전으로 옮김(최신버전 파일 유지)
+		=> 최신버전에서 추가된 파일 스테이지에 등록X
+		MD O / SA X
+
+git reflog > 버전로그보기
+
+////////////////문제////////////////////////
+0 새폴더에서 git init 명령어 사용
+1 aaa.txt 파일을 추가하고 내용입력(아무거나)
+   echo Hello World! > aaa.txt
+2 SA 에 추가후 Commit(message V0.0)
+   git add aaa.txt > git commit -m V0.0 > git log --oneline
+2 bbb.txt 파일을 추가하고 내용입력(아무거나)
+   echo bbb > bbb.txt
+3 SA 에 추가후 Commit(message V0.1)
+   git add * > git commit -m V0.1
+4 ccc.txt 파일을 추가하고 내용입력(아무거나) 
+   echo ccc > ccc.txt
+5 SA 에 추가후 Commit(message V0.2)
+   git add * > git commit -m V0.2
+
+3b6470d (HEAD -> master) V0.2
+fb0d1a6 V0.1
+b097773 V0.0
+
+6 V0.0 으로 --hard 옵션 이동(확인)
+   git reset --hard b097773 > git log --oneline >> WD X / SA X / HEAD V0.0
+
+b097773 (HEAD -> master) HEAD@{0}: reset: moving to b097773
+3b6470d HEAD@{1}: commit: V0.2
+fb0d1a6 HEAD@{2}: commit: V0.1
+b097773 (HEAD -> master) HEAD@{3}: commit (initial): V0.0
+
+7 V0.2 으로 복구(reflog)
+   git reset --hard 3b6470d
+8 V0.1 으로 --soft 옵션 이동(확인)
+   git reset --soft fb0d1a6 > git log --oneline >> WD O / SA O / HEAD V0.1
+9 V0.2 으로 복구
+   git reset --hard 3b6470d
+10 V0.0 으로 --mixed 옵션 이동(확인) 
+   git reset --mixed b097773 >> WD O / SA X / HEAD V0.0
+/////////////////////////////////////////////////////////////////////
+
+Branch 생성(협업)
+  git branch => branch 계정 확인 )) *붙은게 현재 계정
+  git branch <ID> => branch 계정 생성
+  git checkout <ID> => 계정 변경 ) git switch <ID> 도 가능
+
+  git merge <ID> => ID가 작업한 작업물을 합침
+      Fast-forward => 충돌X
+      CONFLICT => 충돌O
+	충돌시 충돌된 파일 수정후 git add * => git merge --continue
+		=> 병합된 계정도 Head값을 옮겨야함 => git switch <병합된 ID>
+			=> git merge <병합한 ID>
+
+////////////////문제////////////////////////
+
+1 branch 생성 (dev,feature) => git branch feature / git branch dev
+2 feature branch에서 작업 진행 => git switch feature
+3 feature 에서 ddd.txt 파일생성후 내용입력 -> commit(V0.3)
+	=> echo ddd > ddd.txt => git add * => git commit -m "V0.3 ddd.txt ADD"49 feature 에서 4 dev으로 merging 작업수행
+	=> git switch dev => git merge feature
+
+5 dev branch 에서 aaa.txt 내용 추가 -> commit(V0.4 by dev)
+	=> echo Hi > aaa.txt => git add * => git commit -m "V0.4 by dev"
+6 feature branch 에서 aaa.txt 내용 추가 -> commit(V0.4 feature)
+	=> git switch geature => echo Hello > aaa.txt
+	=> git add * => git commit -m "V0.4 feature"
+7 Conflict 해결 이후 dev에 병합
+	=> git switch dev => git merge feature => 충돌 파일 수정 => git add *
+	=> git merge --continue => git switch feature => git merge dev
+8 dev 내용 master에 병합
+	=> git switch master => git merge dev
+////////////////////////////////////////////////////////////////////////////////////
+
+github(clone, push, pull, petch)
+ 
+ git remote : 원격 저장소 등록
+     git remote add origin <github address>
+ git push origin > 로컬작업 github에 등록 > git push --set-upstream origin master(처음 한번)
+
+ git clone : 깃헙파일 복사
+     git clone <github address> : 브렌치 정보 안보임 > git branch -r
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
