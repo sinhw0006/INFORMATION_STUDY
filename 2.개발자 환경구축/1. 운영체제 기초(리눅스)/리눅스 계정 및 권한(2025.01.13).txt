@@ -87,10 +87,10 @@ $6 -> 해시알고리즘 종류
 $IgHn1zmXmJ/qJRgZ ->Salt값
 $cj9oHly/ZzwFcQLDXmBfKTlCCWg/yIai7D5j4mrb8Bfd3XAV4Oe4XXHiSBj7ZJUQ9GXGVl9PvgylBXQufvZ8a -> Salt값 + 평문passwod -> 해시알고리즘 -> 해시값
 
-useradd : 사용자 생성
+useradd : 사용자 계정 생성
 -u : UID 지정
--g : 기존 GID 지정
--G : 기존 그룹도 가입하고 새로운그룹도 생성
+-g : 기존 GID 지정(주그룹)
+-G : 기존 그룹도 가입하고 새로운그룹도 생성(보조그룹)
 -c : 설명
 -d : 홈디렉토리 지정
 -k : 스컬디렉토리 지정
@@ -107,6 +107,34 @@ useradd : 사용자 생성
 	> cp -r /etc/skel /ske12 > touch /ske12/test50 > useradd -mk /skel2 test50
 6. test60 계정 생성시 쉘을 /bin/ksh 로 설정  > useradd -s /bin/ksh test60
 
+////////////////////2025.01.14////////////////////
+
+usermod : 사용자 계정 수정
+-u / -g / -G / -c / -s
+
+-d : 홈디렉토리 설정 / -m : 홈디렉토리 이동
+usermod -md /export/home/user3 user3
+
+userdel : 사옹자 계정 삭제
+	userdel user4 -> /home/user4 , /var/spool/mail/user4 는 삭제되지않음
+	userdel -r user4 -> 모두삭제
+
+미니 문제(스냅샷 돌리고 문제푸세요)
+------------------------------------------------------
+useradd test1,test2,test3
+
+1. test1,test2,test3 계정 생성
+
+2. test1 의 comment 를 modtest로 변경 >  usermod -c modtest test1
+
+3. test2 의 주그룹을 test1로, test2의 보조그룹을 test3으로 지정 > usermod -g test1 -G test3 test2
+
+4. test1 의 shell을 /bin/ksh 로변경 >  usermod -s /bin/ksh test1
+
+5. test1의 홈디렉토리를 /test1/home 경로로, test2 홈디렉토리를 /test2/home으로 이동
+	> mkdir -p /test1/home > mkdir -p /test2/home
+	> usermod -md /test1/home/test1 test1
+	> usermod -md /test2/home/test2 test2
 
 
 
