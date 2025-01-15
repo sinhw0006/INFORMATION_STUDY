@@ -1,0 +1,12 @@
+Setting -> Branches -> Add classic branch ... -> Branch name patterm(main)
+	-> Lock branch ch(main)
+	-> befor merging ch -> Require approvals ch(review -> Approve) -> 투표(dev)
+
+Setting -> Collaborators -> Add people -> 팀원 추가
+
+git fetch origin -> 새로생긴거 재등록
+
+/////////////////////////////////////////////////////////////////////
+GIthub Project
+ New Project -> board -> Todo(할 일) / In Progress(진행 중) / Done(완료) > 드래그로 옮김
+	issues -> create branch
