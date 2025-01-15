@@ -10,3 +10,4 @@ git fetch origin -> 새로생긴거 재등록
 GIthub Project
  New Project -> board -> Todo(할 일) / In Progress(진행 중) / Done(완료) > 드래그로 옮김
 	issues -> create branch
+.
