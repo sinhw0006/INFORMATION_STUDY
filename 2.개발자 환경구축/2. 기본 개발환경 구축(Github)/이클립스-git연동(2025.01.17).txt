@@ -1,0 +1,24 @@
+이클립스 GIT연동
+프로젝트 우클릭 -> Team -> Share project -> 체크 -> Create
+Windows -> Show View -> Other -> git Stage / git Repositories
+
+프로젝트 우클릭 -> Team -> Show git history => git 버전확인
+
+Team -> Switch to -> new Branch => 브랜치 생성 / 브랜치 변경도 Switch to 에서 진행
+Team -> merge => 병합(병합할 브랜치에서 진행)
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+1. Workspace 경로 변경 (Workspace2)
+
+2. Tomcat 연결 -> DynamicWeb Project 생성 -> Java Version 11 설정-> servlet.jar / jsp-api-jar lib 등		록-> webapp>index.jsp 생성 -> 동작확인
+
+3. git 설정 -> git init 설정 -> index.jsp에 내용 추가후 commit (V0.0) 
+	-> branch 생성 (dev) -> dev로 전환후 index.jsp에 내용 수정 후 commit(V0.1)
+	-> branch 생성 (feature/board, feature/auth)
+	-> feature/board로 전환후 index.jsp에 내용 수정 후 commit(V0.2-board / V0.2-auth) 
+	-> feature/board -> dev로 병합 (V0.2-dev board)
+	-> feature/auth -> dev로 병합 (V0.2-auth board)
+	-> dev -> master로 병합(V0.2 master)
+	-> 병합 과정에서 발생되는 Conflict는 해결
+///////////////////////////////////////////////////////////////////////////////////////////////////////
