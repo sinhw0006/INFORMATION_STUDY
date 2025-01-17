@@ -22,3 +22,22 @@ Team -> merge => 병합(병합할 브랜치에서 진행)
 	-> dev -> master로 병합(V0.2 master)
 	-> 병합 과정에서 발생되는 Conflict는 해결
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+이클립스 -> GitHub등록					┌> ReadMe X
+	Git Repositories -> Remotes -> create -> URL 등록(GitHub repositories) 
+		-> User에 닉네임 또는 계정이메일 작성 -> Password는 Token값 생성 필요
+ GitHub Token값 생성 -> Settings -> Developer Settings -> access tokens -> Tokens(classic)
+		   -> class으로 선택
+		 NOTE : 토큰 이름
+		 Expiration : 만료일 / workflow, write:packages 제외 체크
+		생성된 값 복사후 password에 작성
+
+GitHub -> 이클립스
+ File -> 
+
+
+
+
+
+
+
+
